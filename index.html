@@ -1,7 +1,177 @@
+<!DOCTYPE html>
 <html>
 <head>
 </head>
 <body>
-    hello!
+
+<button onclick="nextRoll()">Next Roll</button>
+<h3 id="dice-output">None</h3>
+
+<hr>
+
+<div>Total rolls: <span id="total-rolls">None</span></div>
+<div>Configuration: <span id="configuration"></span></div>
+
+<table id="prob-table">
+  <tr>
+    <th>Number</th>
+    <th>Expect Prob</th>
+    <th>Actual Prob</th>
+  </tr>
+  <tr>
+    <th>2</th>
+    <th id="ep2">N/A</th>
+    <th id="ap2">N/A</th>
+  </tr>
+  <tr>
+    <th>3</th>
+    <th id="ep3">N/A</th>
+    <th id="ap3">N/A</th>
+  </tr>
+  <tr>
+    <th>4</th>
+    <th id="ep4">N/A</th>
+    <th id="ap4">N/A</th>
+  </tr>
+  <tr>
+    <th>5</th>
+    <th id="ep5">N/A</th>
+    <th id="ap5">N/A</th>
+  </tr>
+  <tr>
+    <th>6</th>
+    <th id="ep6">N/A</th>
+    <th id="ap6">N/A</th>
+  </tr>
+  <tr>
+    <th>7</th>
+    <th id="ep7">N/A</th>
+    <th id="ap7">N/A</th>
+  </tr>
+  <tr>
+    <th>8</th>
+    <th id="ep8">N/A</th>
+    <th id="ap8">N/A</th>
+  </tr>
+  <tr>
+    <th>9</th>
+    <th id="ep9">N/A</th>
+    <th id="ap9">N/A</th>
+  </tr>
+  <tr>
+    <th>10</th>
+    <th id="ep10">N/A</th>
+    <th id="ap10">N/A</th>
+  </tr>
+  <tr>
+    <th>11</th>
+    <th id="ep11">N/A</th>
+    <th id="ap11">N/A</th>
+  </tr>
+  <tr>
+    <th>12</th>
+    <th id="ep12">N/A</th>
+    <th id="ap12">N/A</th>
+  </tr>
+</table>
+
+<hr>
+
+<button onclick="reset()">RESET</button>
+
+
+<script>
+
+var EXPECT_PROB = {
+    2 : 1.0 / 36,
+    3 : 2.0 / 36,
+    4 : 3.0 / 36,
+    5 : 4.0 / 36,
+    6 : 5.0 / 36,
+    7 : 6.0 / 36,
+    8 : 5.0 / 36,
+    9 : 4.0 / 36,
+    10 : 3.0 / 36,
+    11 : 2.0 / 36,
+    12 : 1.0 / 36,
+};
+var PROB_ALLOWANCE = 0.03;
+var MAX_REP_TIMES = 3;
+var INIT_PHASE_ROLLS = 6;
+
+var numRolls = {};
+
+function percentize(prob) {
+    return Math.floor(prob * 10000) / 100 + "%";
+}
+
+function getTotalRolls() {
+    var totalRolls = 0;
+    for (const [key, value] of Object.entries(numRolls)) {
+        totalRolls += value;
+    }
+    return totalRolls;
+}
+
+function rollOneDie() {
+    return Math.floor(Math.random() * 6) + 1;
+}
+
+function isFair(value) {
+    if ((numRolls[value] / getTotalRolls() - EXPECT_PROB[value]) < PROB_ALLOWANCE) {
+        return true;
+    }
+    console.log(
+        value + " is not fair, prob is " +
+        percentize(numRolls[value] / getTotalRolls()));
+    return false;
+}
+
+function rollTwoDiceTillFair() {
+    var repeatedTimes = {};
+    for (var i = 2; i <= 12; i++) {
+        repeatedTimes[i] = 0;
+    }
+    do {
+        var value = rollOneDie() + rollOneDie();
+        repeatedTimes[value] += 1;
+    } while (
+        getTotalRolls() > INIT_PHASE_ROLLS &&
+        repeatedTimes[value] < MAX_REP_TIMES &&
+        !isFair(value));
+
+    return value;
+}
+
+function updateStats() {
+    var table = document.getElementById("prob-table");
+    for (var i = 2; i <= 12; i++) {
+        table.rows[i - 1].cells[1].innerHTML = percentize(EXPECT_PROB[i]);
+        table.rows[i - 1].cells[2].innerHTML = percentize(numRolls[i] / getTotalRolls());
+    }
+    document.getElementById("total-rolls").innerHTML = getTotalRolls();
+    document.getElementById("configuration").innerHTML =
+        "PROB_ALLOWANCE: " + PROB_ALLOWANCE +
+        ", MAX_REP_TIMES: " + MAX_REP_TIMES +
+        ", INIT_PHASE_ROLLS: " + INIT_PHASE_ROLLS;
+}
+
+function nextRoll() {
+    var value = rollTwoDiceTillFair();
+    numRolls[value] += 1;
+    document.getElementById("dice-output").innerHTML = value;
+    updateStats();
+}
+
+function reset() {
+    for (var i = 2; i <= 12; i++) {
+        numRolls[i] = 0;
+    }
+    updateStats();
+}
+reset();
+
+</script>
+
 </body>
 </html>

@@ -204,11 +204,11 @@ function updateDisplay() {
         var twoDice = rollsSequence[n - 1][0];
         var twoDiceSum = twoDice[0] + twoDice[1];
         document.getElementById("two-dice-output").innerHTML
-            = `Two-dice: ${twoDiceSum} (${twoDice[0]} + ${twoDice[1]})`;
+            = `2-dice: ${twoDiceSum} (${twoDice[0]} + ${twoDice[1]})`;
 
         var oneDie = rollsSequence[n - 1][1];
         document.getElementById("one-die-output").innerHTML =
-            `One-die: ${oneDie}`;
+            `1-die: ${oneDie}`;
     } else {
         document.getElementById("two-dice-output").innerHTML = "Click to roll";
         document.getElementById("one-die-output").innerHTML = "Click to roll";

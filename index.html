@@ -9,9 +9,10 @@
 </head>
 <body>
 
-<div><h2 id="two-dice-output">None</h2></div>
-
-<div><h4 id="one-die-output">None</h4></div>
+<div id="dice-output-section">
+    <h2 id="two-dice-output">None</h2>
+    <h4 id="one-die-output">None</h4>
+</div>
 
 <div><button onclick="nextRoll()">Next Roll</button></div>
 
@@ -202,22 +203,20 @@ function updateDisplay() {
     if (n > 0) {
         var twoDice = rollsSequence[n - 1][0];
         var twoDiceSum = twoDice[0] + twoDice[1];
+        document.getElementById("two-dice-output").innerHTML
+            = `Two-dice: ${twoDiceSum} (${twoDice[0]} + ${twoDice[1]})`;
+
         var oneDie = rollsSequence[n - 1][1];
-
-        var twoDiceOutput = document.getElementById("two-dice-output");
-        twoDiceOutput.innerHTML =
-            `Two-dice: ${twoDiceSum} (${twoDice[0]} + ${twoDice[1]})`;
-        twoDiceOutput.style.color =
-            twoDiceOutput.style.color == "blue" ? "red" : "blue";
-
-        var oneDieOutput = document.getElementById("one-die-output");
-        oneDieOutput.innerHTML = `One-die: ${oneDie}`;
-        oneDieOutput.style.color =
-            oneDieOutput.style.color == "blue" ? "red" : "blue";
+        document.getElementById("one-die-output").innerHTML =
+            `One-die: ${oneDie}`;
     } else {
         document.getElementById("two-dice-output").innerHTML = "Click to roll";
         document.getElementById("one-die-output").innerHTML = "Click to roll";
     }
+
+    var diceOutputSection = document.getElementById("dice-output-section");
+    diceOutputSection.style.color =
+        diceOutputSection.style.color == "red" ? "blue" : "red";
 
     document.getElementById("rolls-sequence-output").innerHTML =
         `[${rollsSequence.join(' # ')}]`;

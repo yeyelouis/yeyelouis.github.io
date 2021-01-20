@@ -8,26 +8,25 @@
 
 </head>
 <body>
-<div class="container">
 
-<div class="row"><h2 id="two-dice-output">None</h2></div>
+<div><h2 id="two-dice-output">None</h2></div>
 
-<div class="row"><h4 id="one-die-output">None</h4></div>
+<div><h4 id="one-die-output">None</h4></div>
 
-<div class="row"><button onclick="nextRoll()">Next Roll</button></div>
+<div><button onclick="nextRoll()">Next Roll</button></div>
 
 <hr>
 
-<div class="row">Total rolls: <span id="total-rolls">None</span></div>
-<div class="row">Configuration: <span id="configuration"></span></div>
+<div>Total rolls: <span id="total-rolls">None</span></div>
+<div>Configuration: <span id="configuration"></span></div>
 
-<div class="row">
+<div>
     <button onclick="hideOrShowStats()">Hide/Show Stats</button>
 </div>
 
-<div class="row" id="stats-section">
+<div id="stats-section">
     <h4>Two-Dice Stats</h4>
-    <table class="table" id="prob-table">
+    <table id="prob-table">
       <tr>
         <th>Number---</th>
         <th>P(Expect)---</th>
@@ -104,15 +103,13 @@
 <hr>
 <hr>
 
-<div class="row">
+<div>
     <button onclick="revertLatestRoll()">Revert Latest Roll</button>
 </div>
 <hr>
-<div class="row">
+<div>
     <button onclick="reset()">RESET</button>
 </div>
-
-
 
 <script>
 
@@ -257,6 +254,5 @@ reset();
 
 </script>
 
-</div>
 </body>
 </html>

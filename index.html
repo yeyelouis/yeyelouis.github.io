@@ -4,89 +4,97 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+<title>Fair/Balanced Dice</title>
 
 </head>
 <body>
+<div class="container">
 
-<h3 id="dice-output">None</h3>
+<div class="row"><h2 id="two-dice-output">None</h2></div>
 
-<button onclick="nextRoll()">Next Roll</button>
+<div class="row"><h4 id="one-die-output">None</h4></div>
 
-<hr>
-
-<div>Total rolls: <span id="total-rolls">None</span></div>
-<div>Configuration: <span id="configuration"></span></div>
-
-<button onclick="hideOrShowTable()">Hide or Show</button>
-<table id="prob-table">
-  <tr>
-    <th>Number</th>
-    <th>Expect Prob</th>
-    <th>Actual Prob</th>
-  </tr>
-  <tr>
-    <th>2</th>
-    <th id="ep2">N/A</th>
-    <th id="ap2">N/A</th>
-  </tr>
-  <tr>
-    <th>3</th>
-    <th id="ep3">N/A</th>
-    <th id="ap3">N/A</th>
-  </tr>
-  <tr>
-    <th>4</th>
-    <th id="ep4">N/A</th>
-    <th id="ap4">N/A</th>
-  </tr>
-  <tr>
-    <th>5</th>
-    <th id="ep5">N/A</th>
-    <th id="ap5">N/A</th>
-  </tr>
-  <tr>
-    <th>6</th>
-    <th id="ep6">N/A</th>
-    <th id="ap6">N/A</th>
-  </tr>
-  <tr>
-    <th>7</th>
-    <th id="ep7">N/A</th>
-    <th id="ap7">N/A</th>
-  </tr>
-  <tr>
-    <th>8</th>
-    <th id="ep8">N/A</th>
-    <th id="ap8">N/A</th>
-  </tr>
-  <tr>
-    <th>9</th>
-    <th id="ep9">N/A</th>
-    <th id="ap9">N/A</th>
-  </tr>
-  <tr>
-    <th>10</th>
-    <th id="ep10">N/A</th>
-    <th id="ap10">N/A</th>
-  </tr>
-  <tr>
-    <th>11</th>
-    <th id="ep11">N/A</th>
-    <th id="ap11">N/A</th>
-  </tr>
-  <tr>
-    <th>12</th>
-    <th id="ep12">N/A</th>
-    <th id="ap12">N/A</th>
-  </tr>
-</table>
+<div class="row"><button onclick="nextRoll()">Next Roll</button></div>
 
 <hr>
+
+<div class="row">Total rolls: <span id="total-rolls">None</span></div>
+<div class="row">Configuration: <span id="configuration"></span></div>
+
+<div class="row">
+    <button onclick="hideOrShowStats()">Hide/Show Stats</button>
+</div>
+
+<div class="row" id="stats-section">
+    <h4>Two-Dice Stats</h4>
+    <table class="table" id="prob-table">
+      <tr>
+        <th>Number---</th>
+        <th>P(Expect)---</th>
+        <th>P(Actual)---</th>
+      </tr>
+      <tr>
+        <th>2</th>
+        <th id="ep2">N/A</th>
+        <th id="ap2">N/A</th>
+      </tr>
+      <tr>
+        <th>3</th>
+        <th id="ep3">N/A</th>
+        <th id="ap3">N/A</th>
+      </tr>
+      <tr>
+        <th>4</th>
+        <th id="ep4">N/A</th>
+        <th id="ap4">N/A</th>
+      </tr>
+      <tr>
+        <th>5</th>
+        <th id="ep5">N/A</th>
+        <th id="ap5">N/A</th>
+      </tr>
+      <tr>
+        <th>6</th>
+        <th id="ep6">N/A</th>
+        <th id="ap6">N/A</th>
+      </tr>
+      <tr>
+        <th>7</th>
+        <th id="ep7">N/A</th>
+        <th id="ap7">N/A</th>
+      </tr>
+      <tr>
+        <th>8</th>
+        <th id="ep8">N/A</th>
+        <th id="ap8">N/A</th>
+      </tr>
+      <tr>
+        <th>9</th>
+        <th id="ep9">N/A</th>
+        <th id="ap9">N/A</th>
+      </tr>
+      <tr>
+        <th>10</th>
+        <th id="ep10">N/A</th>
+        <th id="ap10">N/A</th>
+      </tr>
+      <tr>
+        <th>11</th>
+        <th id="ep11">N/A</th>
+        <th id="ap11">N/A</th>
+      </tr>
+      <tr>
+        <th>12</th>
+        <th id="ep12">N/A</th>
+        <th id="ap12">N/A</th>
+      </tr>
+    </table>
+    <h4>Rolls Sequence</h4>
+    <div id="rolls-sequence-output">[]</div>
+</div>
+
+<hr>
+<hr>
 <hr>
 <hr>
 <hr>
@@ -96,7 +104,14 @@
 <hr>
 <hr>
 
-<button onclick="reset()">RESET</button>
+<div class="row">
+    <button onclick="revertLatestRoll()">Revert Latest Roll</button>
+</div>
+<hr>
+<div class="row">
+    <button onclick="reset()">RESET</button>
+</div>
+
 
 
 <script>
@@ -119,6 +134,7 @@ var MAX_REP_TIMES = 3;
 var INIT_PHASE_ROLLS = 6;
 
 var numRolls = {};
+var rollsSequence = [];
 
 function percentize(prob) {
     return Math.floor(prob * 10000) / 100 + "%";
@@ -137,7 +153,8 @@ function rollOneDie() {
 }
 
 function isFair(value) {
-    if ((numRolls[value] / getTotalRolls() - EXPECT_PROB[value]) < PROB_ALLOWANCE) {
+    if ((numRolls[value] / getTotalRolls() - EXPECT_PROB[value])
+        < PROB_ALLOWANCE) {
         return true;
     }
     console.log(
@@ -147,61 +164,99 @@ function isFair(value) {
 }
 
 function rollTwoDiceTillFair() {
+    var die1 = 0;
+    var die2 = 0;
     var repeatedTimes = {};
     for (var i = 2; i <= 12; i++) {
         repeatedTimes[i] = 0;
     }
     do {
-        var value = rollOneDie() + rollOneDie();
-        repeatedTimes[value] += 1;
+        die1 = rollOneDie();
+        die2 = rollOneDie();
+        var diceSum = die1 + die2;
+        repeatedTimes[diceSum] += 1;
     } while (
         getTotalRolls() > INIT_PHASE_ROLLS &&
-        repeatedTimes[value] < MAX_REP_TIMES &&
-        !isFair(value));
+        repeatedTimes[diceSum] < MAX_REP_TIMES &&
+        !isFair(diceSum));
 
-    return value;
+    return [die1, die2];
 }
 
-function updateStats() {
+function hideOrShowStats() {
+    var stats = document.getElementById("stats-section");
+    stats.style.display = stats.style.display == 'none' ? 'block' : 'none';
+}
+
+function updateDisplay() {
     var table = document.getElementById("prob-table");
     for (var i = 2; i <= 12; i++) {
         table.rows[i - 1].cells[1].innerHTML = percentize(EXPECT_PROB[i]);
-        table.rows[i - 1].cells[2].innerHTML = percentize(numRolls[i] / getTotalRolls());
+        table.rows[i - 1].cells[2].innerHTML =
+            percentize(numRolls[i] / getTotalRolls());
     }
     document.getElementById("total-rolls").innerHTML = getTotalRolls();
     document.getElementById("configuration").innerHTML =
         "PROB_ALLOWANCE: " + PROB_ALLOWANCE +
         ", MAX_REP_TIMES: " + MAX_REP_TIMES +
         ", INIT_PHASE_ROLLS: " + INIT_PHASE_ROLLS;
+
+    var n = rollsSequence.length;
+    if (n > 0) {
+        var twoDice = rollsSequence[n - 1][0];
+        var twoDiceSum = twoDice[0] + twoDice[1];
+        var oneDie = rollsSequence[n - 1][1];
+
+        var twoDiceOutput = document.getElementById("two-dice-output");
+        twoDiceOutput.innerHTML =
+            `Two-dice: ${twoDiceSum} (${twoDice[0]} + ${twoDice[1]})`;
+        twoDiceOutput.style.color =
+            twoDiceOutput.style.color == "blue" ? "red" : "blue";
+
+        var oneDieOutput = document.getElementById("one-die-output");
+        oneDieOutput.innerHTML = `One-die: ${oneDie}`;
+        oneDieOutput.style.color =
+            oneDieOutput.style.color == "blue" ? "red" : "blue";
+    } else {
+        document.getElementById("two-dice-output").innerHTML = "Click to roll";
+        document.getElementById("one-die-output").innerHTML = "Click to roll";
+    }
+
+    document.getElementById("rolls-sequence-output").innerHTML =
+        `[${rollsSequence.join(' # ')}]`;
 }
 
 function nextRoll() {
-    var value = rollTwoDiceTillFair();
-    numRolls[value] += 1;
-    document.getElementById("dice-output").innerHTML = value;
+    var twoDice = rollTwoDiceTillFair();
+    var twoDiceSum = twoDice[0] + twoDice[1];
+    var oneDie = rollOneDie();
 
-    var currentColor = document.getElementById("dice-output").style.color;
-    document.getElementById("dice-output").style.color =
-        currentColor == "blue" ? "red" : "blue";
+    numRolls[twoDiceSum] += 1;
+    rollsSequence.push([twoDice, oneDie]);
 
-    updateStats();
+    updateDisplay();
 }
 
-function hideOrShowTable() {
-    var currentDisplay = document.getElementById("prob-table").style.display;
-    document.getElementById("prob-table").style.display =
-        currentDisplay == 'none' ? 'block' : 'none';
+function revertLatestRoll() {
+    if (rollsSequence.length > 0) {
+        var twoDice = rollsSequence.pop()[0];
+        var twoDiceSum = twoDice[0] + twoDice[1];
+        numRolls[twoDiceSum] -= 1;
+    }
+    updateDisplay();
 }
 
 function reset() {
     for (var i = 2; i <= 12; i++) {
         numRolls[i] = 0;
     }
-    updateStats();
+    rollsSequence = [];
+    updateDisplay();
 }
 reset();
 
 </script>
 
+</div>
 </body>
 </html>

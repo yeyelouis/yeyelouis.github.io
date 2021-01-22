@@ -207,16 +207,32 @@ function updateDisplay() {
             = `2-dice: ${twoDiceSum} (${twoDice[0]} + ${twoDice[1]})`;
 
         var oneDie = rollsSequence[n - 1][1];
-        document.getElementById("one-die-output").innerHTML =
-            `1-die: ${oneDie}`;
+        var oneDieOutput = document.getElementById("one-die-output");
+        oneDieOutput.innerHTML = `1-die: ${oneDie}`;
+        switch(oneDie) {
+            case 1:
+            case 2:
+            case 3:
+                oneDieOutput.style.color = 'black';
+                break;
+            case 4:
+                oneDieOutput.style.color = 'goldenRod';
+                break;
+            case 5:
+                oneDieOutput.style.color = 'blue';
+                break;
+            case 6:
+                oneDieOutput.style.color = 'green';
+                break;
+        }
     } else {
         document.getElementById("two-dice-output").innerHTML = "Click to roll";
         document.getElementById("one-die-output").innerHTML = "Click to roll";
     }
 
-    var diceOutputSection = document.getElementById("dice-output-section");
-    diceOutputSection.style.color =
-        diceOutputSection.style.color == "red" ? "blue" : "red";
+    var twoDiceOutput = document.getElementById("two-dice-output");
+    twoDiceOutput.style.color =
+        twoDiceOutput.style.color == "black" ? "purple" : "black";
 
     document.getElementById("rolls-sequence-output").innerHTML =
         `[${rollsSequence.join(' # ')}]`;

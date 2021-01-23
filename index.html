@@ -10,9 +10,9 @@
 <body>
 
 <div id="dice-output-section">
+    <h3 id="die-a-b-sum-output">None</h3>
     <h3 id="die-a-output">None</h3>
     <h3 id="die-b-output">None</h3>
-    <h3 id="die-a-b-sum-output">None</h3>
     <h3 id="die-c-output">None</h3>
 </div>
 
@@ -211,19 +211,16 @@ function updateDisplay() {
         var bDie = rollsSequence[n - 1][1];
         var cDie = rollsSequence[n - 1][2];
 
-        aDieOutput.innerHTML  = `Die.A: ${aDie}`;
-        bDieOutput.innerHTML  = `Die.B: ${bDie}`;
-        abSumOutput.innerHTML = `(A+B = ${aDie + bDie})`;
-        cDieOutput.innerHTML  = `Die.C: ${cDie}`;
+        aDieOutput.innerHTML  = `Die A: ${aDie}`;
+        bDieOutput.innerHTML  = `Die B: ${bDie}`;
+        abSumOutput.innerHTML = `A+B = ${aDie + bDie}`;
+        cDieOutput.innerHTML  = `Die C: ${cDie}`;
 
-        abSumOutput.style.color = abSumOutput.style.color == "darkslategrey" ?
-            "brown" : "darkslategrey";
-        console.log(abSumOutput.style.color);
         switch(cDie) {
             case 1:
             case 2:
             case 3:
-                aDieOutput.style.color = cDieOutput.style.color = "black";
+                aDieOutput.style.color = cDieOutput.style.color = "dimgrey";
                 break;
             case 4:
                 aDieOutput.style.color = cDieOutput.style.color = "goldenrod";
@@ -240,14 +237,14 @@ function updateDisplay() {
         bDieOutput.innerHTML  = "None";
         abSumOutput.innerHTML = "None";
         cDieOutput.innerHTML  = "None";
-        aDieOutput.style.color  = "Black";
-        bDieOutput.style.color  = "Black";
+        aDieOutput.style.color  = "dimgrey";
+        bDieOutput.style.color  = "dimgrey";
         abSumOutput.style.color = "Black";
-        cDieOutput.style.color  = "Black";
+        cDieOutput.style.color  = "dimgrey";
     }
 
     document.getElementById("rolls-sequence-output").innerHTML =
-        `[${rollsSequence.join(' # ')}]`;
+        `[${rollsSequence.join(' ## ')}]`;
 }
 
 function nextRoll() {

@@ -10,7 +10,7 @@
 <body>
 
 <div id="dice-output-section">
-    <h3 id="die-a-b-sum-output">None</h3>
+    <h2 id="die-a-b-sum-output">None</h2>
     <h3 id="die-a-output">None</h3>
     <h3 id="die-b-output">None</h3>
     <h3 id="die-c-output">None</h3>
@@ -213,14 +213,14 @@ function updateDisplay() {
 
         aDieOutput.innerHTML  = `Die A: ${aDie}`;
         bDieOutput.innerHTML  = `Die B: ${bDie}`;
-        abSumOutput.innerHTML = `A+B = ${aDie + bDie}`;
+        abSumOutput.innerHTML = `A+B= ${aDie + bDie}`;
         cDieOutput.innerHTML  = `Die C: ${cDie}`;
 
         switch(cDie) {
             case 1:
             case 2:
             case 3:
-                aDieOutput.style.color = cDieOutput.style.color = "dimgrey";
+                aDieOutput.style.color = cDieOutput.style.color = "black";
                 break;
             case 4:
                 aDieOutput.style.color = cDieOutput.style.color = "goldenrod";
@@ -237,10 +237,10 @@ function updateDisplay() {
         bDieOutput.innerHTML  = "None";
         abSumOutput.innerHTML = "None";
         cDieOutput.innerHTML  = "None";
-        aDieOutput.style.color  = "dimgrey";
-        bDieOutput.style.color  = "dimgrey";
+        aDieOutput.style.color  = "black";
+        bDieOutput.style.color  = "black";
         abSumOutput.style.color = "Black";
-        cDieOutput.style.color  = "dimgrey";
+        cDieOutput.style.color  = "black";
     }
 
     document.getElementById("rolls-sequence-output").innerHTML =
